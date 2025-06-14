@@ -1,0 +1,11 @@
+{
+    "Microsoft.DataFactory/factories/linkedServices": {
+        "downloads": {
+            "properties": {
+                "typeProperties": {
+                    "url": "=-:PROD_REST_API_URL"
+                }
+            }
+        }
+    }
+}
