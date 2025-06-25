@@ -65,7 +65,7 @@ jobs:
       - name: data-factory-deploy
         uses: Azure/data-factory-deploy-action@v1.2.0
         with:
-          resourceGroupName: {{ secrets.AZURE_PROD_RESOURCE_GROUP }} #TargetResourceGroup
+          resourceGroupName: resource-prod #TargetResourceGroup
           dataFactoryName: ${{ secrets.AZURE_PROD_DATA_FACTORY }} #targetADF
           armTemplateFile: ARMTemplateForFactory.json
           armTemplateParametersFile: ARMTemplateParametersForFactory.json
