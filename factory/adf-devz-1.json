@@ -1,9 +1,0 @@
-{
-	"name": "adf-devz-1",
-	"location": "australiaeast",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "3457dab0-58e9-4bc8-8296-a62d2205ce68",
-		"tenantId": "4d53a57f-cdbd-486a-b0af-5bf2416af601"
-	}
-}
