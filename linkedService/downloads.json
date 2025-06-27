@@ -1,8 +1,8 @@
 {
-	"name": "downloads_ls",
+	"name": "downloads",
 	"properties": {
 		"annotations": [],
-		"type": "RestService",
+		"type": "HttpServer",
 		"typeProperties": {
 			"url": "https://cdn.rebrickable.com/media/downloads/",
 			"enableServerCertificateValidation": true,
