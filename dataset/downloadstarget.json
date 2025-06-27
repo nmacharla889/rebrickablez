@@ -1,0 +1,48 @@
+{
+	"name": "downloadstarget",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "storage_ls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"datasetName": {
+				"type": "string"
+			},
+			"year": {
+				"type": "string"
+			},
+			"month": {
+				"type": "string"
+			},
+			"day": {
+				"type": "string"
+			},
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('rebrickable/legos', '/', dataset().datasetName, '/', dataset().year, '/', dataset().month, '/', dataset().day)",
+					"type": "Expression"
+				},
+				"fileSystem": "raw"
+			},
+			"columnDelimiter": ",",
+			"compressionCodec": "gzip",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
