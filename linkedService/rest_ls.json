@@ -1,0 +1,22 @@
+{
+	"name": "rest_ls",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://rebrickable.com",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous",
+			"authHeaders": {
+				"Authorization": {
+					"type": "AzureKeyVaultSecret",
+					"store": {
+						"referenceName": "keyvault_ls",
+						"type": "LinkedServiceReference"
+					},
+					"secretName": "rebrickable-authorization"
+				}
+			}
+		}
+	}
+}
