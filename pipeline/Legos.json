@@ -1,0 +1,113 @@
+{
+	"name": "Legos",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEachFileNameToDownload",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.fileNamesToDownload",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_RebrickableGzipFiles",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "BinarySource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									},
+									"formatSettings": {
+										"type": "BinaryReadSettings"
+									}
+								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "Lego_source",
+									"type": "DatasetReference",
+									"parameters": {
+										"fileName": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Lego_target",
+									"type": "DatasetReference",
+									"parameters": {
+										"datasetName": {
+											"value": "@replace(item(), '.csv.gz', '')",
+											"type": "Expression"
+										},
+										"year": {
+											"value": "@formatDateTime(utcNow(), 'yyyy')",
+											"type": "Expression"
+										},
+										"month": {
+											"value": "@formatDateTime(utcNow(), 'MM')",
+											"type": "Expression"
+										},
+										"day": {
+											"value": "@formatDateTime(utcNow(), 'dd')",
+											"type": "Expression"
+										},
+										"fileName": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"fileNamesToDownload": {
+				"type": "array",
+				"defaultValue": [
+					"themes.csv.gz",
+					"colors.csv.gz",
+					"part_categories.csv.gz",
+					"parts.csv.gz",
+					"part_relationships.csv.gz",
+					"elements.csv.gz",
+					"sets.csv.gz",
+					"minifigs.csv.gz",
+					"inventories.csv.gz",
+					"inventory_parts.csv.gz",
+					"inventory_sets.csv.gz",
+					"inventory_minifigs.csv.gz"
+				]
+			}
+		},
+		"annotations": []
+	}
+}
