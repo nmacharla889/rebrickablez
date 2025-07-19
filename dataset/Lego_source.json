@@ -1,0 +1,25 @@
+{
+	"name": "Lego_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "downloads",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
