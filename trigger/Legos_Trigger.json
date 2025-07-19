@@ -1,0 +1,40 @@
+{
+	"name": "Legos_Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Legos",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fileNamesToDownload": [
+						"themes.csv.gz",
+						"colors.csv.gz",
+						"part_categories.csv.gz",
+						"parts.csv.gz",
+						"part_relationships.csv.gz",
+						"elements.csv.gz",
+						"sets.csv.gz",
+						"minifigs.csv.gz",
+						"inventories.csv.gz",
+						"inventory_parts.csv.gz",
+						"inventory_sets.csv.gz",
+						"inventory_minifigs.csv.gz"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2025-07-20T09:00:00",
+				"timeZone": "AUS Eastern Standard Time"
+			}
+		}
+	}
+}
