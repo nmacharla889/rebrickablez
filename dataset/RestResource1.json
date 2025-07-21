@@ -1,0 +1,33 @@
+{
+	"name": "RestResource1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "rest_ls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"userToken": {
+				"type": "string"
+			},
+			"apiKey": {
+				"type": "securestring"
+			},
+			"pagesize": {
+				"type": "int",
+				"defaultValue": 1000
+			},
+			"userEndpoint": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": {
+				"value": "@concat('/api/v3/users/', dataset().userToken, '/', dataset().userEndpoint, '?key=', dataset().apiKey, '&page_size=', string(dataset().pagesize))",
+				"type": "Expression"
+			}
+		},
+		"schema": []
+	}
+}
