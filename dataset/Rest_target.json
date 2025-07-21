@@ -1,0 +1,39 @@
+{
+	"name": "Rest_target",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "storage_ls",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"datasetName": {
+				"type": "string"
+			},
+			"year": {
+				"type": "string"
+			},
+			"month": {
+				"type": "string"
+			},
+			"day": {
+				"type": "string"
+			},
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat('rebrickable/users/', dataset().datasetName, '/', dataset().year, '/', dataset().month, '/', dataset().day, '/', dataset().fileName)",
+					"type": "Expression"
+				},
+				"fileSystem": "raw"
+			}
+		},
+		"schema": {}
+	}
+}
