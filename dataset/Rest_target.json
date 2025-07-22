@@ -20,6 +20,13 @@
 					"type": "Expression"
 				},
 				"fileSystem": "raw"
+			},
+			"compression": {
+				"type": "None"
+			},
+			"formatSettings": {
+				"type": "JsonWriteSettings",
+				"filePattern": "arrayOfObjects"
 			}
 		},
 		"schema": {}
