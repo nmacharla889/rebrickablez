@@ -92,7 +92,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"userToken": {
-											"value": "@activity('Get User token').output",
+											"value": "@activity('Get User token').output.value",
 											"type": "Expression"
 										},
 										"userEndpoint": {
