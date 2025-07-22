@@ -67,7 +67,7 @@
 									"requestMethod": "GET",
 									"additionalHeaders": {
 										"Authorization": {
-											"value": "@activity('Get Authorization Key').output",
+											"value": "@activity('Get Authorization Key').output.value",
 											"type": "Expression"
 										}
 									},
