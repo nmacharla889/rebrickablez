@@ -146,13 +146,12 @@
 				"defaultValue": [
 					"allparts",
 					"lost_parts",
-					"mini_figs",
+					"minifigs",
 					"partlists",
 					"parts",
 					"profile",
 					"setlists",
-					"sets",
-					"badges"
+					"sets"
 				]
 			}
 		},
