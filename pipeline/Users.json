@@ -5,7 +5,20 @@
 			{
 				"name": "For Each endpoint",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Get Authorization Key",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Get User token",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -14,43 +27,9 @@
 					},
 					"activities": [
 						{
-							"name": "Get Authorization Key",
-							"type": "WebActivity",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": true,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"method": "GET",
-								"url": "https://keyvault-dev-1.vault.azure.net/secrets/rebrickable-authorization/?api-version=7.0",
-								"authentication": {
-									"type": "MSI",
-									"resource": "https://vault.azure.net"
-								}
-							}
-						},
-						{
 							"name": "Copy users data",
 							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "Get Authorization Key",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								},
-								{
-									"activity": "Get User token",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -114,29 +93,50 @@
 									}
 								}
 							]
-						},
-						{
-							"name": "Get User token",
-							"type": "WebActivity",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": true,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"method": "GET",
-								"url": "https://keyvault-dev-1.vault.azure.net/secrets/rebrickable-usertoken/?api-version=7.0",
-								"authentication": {
-									"type": "MSI",
-									"resource": "https://vault.azure.net"
-								}
-							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Get Authorization Key",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://keyvault-dev-1.vault.azure.net/secrets/rebrickable-authorization/?api-version=7.0",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "Get User token",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://keyvault-dev-1.vault.azure.net/secrets/rebrickable-usertoken/?api-version=7.0",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
 				}
 			}
 		],
