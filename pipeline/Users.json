@@ -51,7 +51,7 @@
 										}
 									},
 									"paginationRules": {
-										"supportRFC5988": "true"
+										"AbsoluteUrl": "$.next"
 									}
 								},
 								"sink": {
