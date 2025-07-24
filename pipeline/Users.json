@@ -111,7 +111,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "GET",
-					"url": "https://keyvault-dev-1.vault.azure.net/secrets/rebrickable-authorization/?api-version=7.0",
+					"url": {
+						"value": "@concat(pipeline().parameters.KeyVaultBaseUrl, 'secrets/rebrickable-authorization/?api-version=7.0')",
+						"type": "Expression"
+					},
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://vault.azure.net"
@@ -132,7 +135,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "GET",
-					"url": "https://keyvault-dev-1.vault.azure.net/secrets/rebrickable-usertoken/?api-version=7.0",
+					"url": {
+						"value": "@concat(pipeline().parameters.KeyVaultBaseUrl, 'secrets/rebrickable-usertoken/?api-version=7.0')\n",
+						"type": "Expression"
+					},
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://vault.azure.net"
@@ -153,6 +159,10 @@
 					"setlists",
 					"sets"
 				]
+			},
+			"KeyVaultBaseUrl": {
+				"type": "string",
+				"defaultValue": "https://keyvault-dev-1.vault.azure.net/"
 			}
 		},
 		"annotations": []
