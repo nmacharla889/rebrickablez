@@ -162,7 +162,7 @@
 			},
 			"KeyVaultBaseUrl": {
 				"type": "string",
-				"defaultValue": "@{pipeline().globalParameters.KeyVaultBaseUrl}"
+				"defaultValue": "https://keyvault-dev-1.vault.azure.net/"
 			}
 		},
 		"annotations": []
