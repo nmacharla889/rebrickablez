@@ -69,7 +69,7 @@ jobs:
           dataFactoryName: ${{ secrets.AZURE_PROD_DATA_FACTORY }} #targetADF
           armTemplateFile: ARMTemplateForFactory.json
           armTemplateParametersFile: ARMTemplateParametersForFactory.json
-          additionalParameters: storage_ls_properties_typeProperties_url=https://storageprodz.dfs.core.windows.net keyvault_ls_properties_typeProperties_baseUrl=https://keyvault-prod-1.vault.azure.net/ pipeline.parameters.KeyVaultBaseUrl=https://keyvault-prod-1.vault.azure.net/
+          additionalParameters: storage_ls_properties_typeProperties_url=https://storageprodz.dfs.core.windows.net keyvault_ls_properties_typeProperties_baseUrl=https://keyvault-prod-1.vault.azure.net/ KeyVaultBaseUrl=https://keyvault-prod-1.vault.azure.net/
           # (10) Parameters which will be replaced in the ARM template. Expected format 'key1=value key2=value keyN=value'. At the minimum here you should provide the target ADF name parameter. Check the ARMTemplateParametersForFactory.json file for all the parameters that are expected in your scenario
          
           # skipAzModuleInstallation:  # Parameters which skip the Az module installation. Optional, default is false.      
