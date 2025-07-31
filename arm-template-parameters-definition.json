@@ -1,9 +1,9 @@
 {
   "Microsoft.DataFactory/factories/pipelines": {
-    "*": {
+    "users": {
       // Applies to all pipelines. You can replace '*' with a specific pipeline name if needed.
       "parameters": {
-        "keyVaultUrl": {
+        "KeyVaultBaseUrl": {
           // The exact name of your pipeline parameter
           "defaultValue": "=" // This tells ADF to parameterize its default value
         }
